@@ -1,0 +1,13 @@
+<turbo-stream action="replace" target="list-notification">
+  <template>
+    <div id="list-notification">
+      <p class="notification"><%= @task %> added</p>
+    </div>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="append" target="list">
+  <template>
+    <li><%= params[:task] %></li>
+  </template>
+</turbo-stream>

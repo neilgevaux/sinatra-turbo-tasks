@@ -1,0 +1,8 @@
+.notification {
+  width: 50%;
+  border: 1px solid aquamarine;
+  border-radius: 5px;
+  color: aquamarine;
+  padding: 2%;
+  text-align: center;
+}
