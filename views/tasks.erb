@@ -1,13 +1,13 @@
-<turbo-stream action="replace" target="list-notification">
+<turbo-stream action="replace" target="list">
   <template>
-    <div id="list-notification">
-      <p class="notification"><%= @task %> added</p>
-    </div>
-  </template>
-</turbo-stream>
-
-<turbo-stream action="append" target="list">
-  <template>
-    <li><%= params[:task] %></li>
+    <ul>
+      <% (@tasks["list"] || []).each_with_index do |task, index| %>
+        <li>
+          <span><strong><%= task[:name] %></strong></span> - 
+          <span>Due: <%= task[:due_date] %></span> - 
+          <span>Status: <%= task[:complete] ? 'Complete' : 'Incomplete' %></span>
+        </li>
+      <% end %>
+    </ul>
   </template>
 </turbo-stream>

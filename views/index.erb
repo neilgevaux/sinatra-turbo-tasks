@@ -1,51 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script type="module">
-    import * as Turbo from 'https://cdn.skypack.dev/@hotwired/turbo@7.1.0';
-
-    // Reset the form after Turbo has handled the form submission
-    document.addEventListener('turbo:load', () => {
-      const form = document.querySelector('form');
-      if (form) {
-        form.addEventListener('turbo:submit-end', () => {
-          form.reset();
-        });
-      }
-    });
-  </script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <title>Task list</title>
+  <title>Task List</title>
+  <script type="module" src="https://cdn.skypack.dev/@hotwired/turbo"></script>
 </head>
 <body>
   <header>
-    <h1>Task list</h1>
+    <h1>Task List</h1>
   </header>
   <main>
-    <div>
-      <div id="list-notification"></div>
-    </div>
-
-    <div id="list-container">
-      <div id="form-container">
-      </div>
-      <h2>Your tasks</h2>
-
+    <div id="form-container">
       <form action="/tasks" method="post" data-turbo="true">
         <div>
-          <input type="text" name="task" id="task" placeholder="Add a task" />
+          <input type="text" name="task_name" placeholder="Add a task" required />
+          <input type="date" name="due_date" />
           <button type="submit">Submit</button>
         </div>
       </form>
     </div>
 
+    <h2>Your Tasks</h2>
     <ul id="list">
-      <% @tasks.each do |task| %>
-      <li><%= task %></li>
+      <% if @tasks["list"].any? %>
+        <% @tasks["list"].each_with_index do |task, index| %>
+          <li>
+            <span><strong><%= task[:name] %></strong></span> - 
+            <span>Due: <%= task[:due_date] %></span> - 
+            <span>Status: <%= task[:complete] ? 'Complete' : 'Incomplete' %></span>
+            <form action="/tasks/edit/<%= index %>" method="get" data-turbo="true" style="display: inline;">
+              <button type="submit">Edit</button>
+            </form>
+          </li>
+        <% end %>
+      <% else %>
+        <li>No tasks added yet.</li>
       <% end %>
     </ul>
   </main>
