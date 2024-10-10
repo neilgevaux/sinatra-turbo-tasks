@@ -1,0 +1,7 @@
+<turbo-stream action="append" target="task-list">
+  <template>
+    <li id="task <%= TASKS.length - 1 %>">
+       <button data-turbo-method="put" data-turbo-action="edit-task" data-task-index="<%= TASKS.length - 1 %>">Edit</button>
+    </li>
+  </template>
+</turbo-stream>

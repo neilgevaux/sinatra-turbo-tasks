@@ -1,0 +1,4 @@
+<li id="task-<%= index + 1 %>">
+  <%= task %>
+  <button data-turbo-method="put" data-turbo-action="edit-task" data-task-index="<%= index %>">Edit</button>
+</li>
