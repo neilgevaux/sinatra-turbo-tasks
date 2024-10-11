@@ -1,13 +1,13 @@
-<turbo-stream action="replace" target="list">
+
+
+<turbo-stream action="append" target="list">
   <template>
-    <ul>
-      <% (@tasks["list"] || []).each_with_index do |task, index| %>
-        <li>
-          <span><strong><%= task[:name] %></strong></span> - 
-          <span>Due: <%= task[:due_date] %></span> - 
-          <span>Status: <%= task[:complete] ? 'Complete' : 'Incomplete' %></span>
-        </li>
-      <% end %>
-    </ul>
+    <li id="<%= @task[:id] %>">
+      <%= @task[:name] %>
+      <span class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+        <a href="/tasks/<%= @task[:id] %>/edit" class="btn btn-outline-primary" role="button">Edit</a>
+        <a href="/tasks/<%= @task[:id] %>/delete" class="btn btn-outline-danger" role="button">Delete</a>
+      </span>
+    </li>
   </template>
 </turbo-stream>

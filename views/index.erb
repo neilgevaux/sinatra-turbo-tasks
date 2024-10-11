@@ -19,12 +19,12 @@
     </div>
     <ul id="list">
       <% @tasks.each do |task| %>
-      <li>
-        <%= task[:name] %>
-        <span class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-          <a href="/tasks/<%= task[:id] %>/edit" class="btn btn-outline-primary" role="button">Edit</a>
-          <a href="/tasks/<%= task[:id] %>/delete" class="btn btn-outline-primary" role="button">Delete</a>
-        </span>
+        <li id="<%= task[:id] %>">
+          <%= task[:name] %>
+          <span class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+            <a href="/tasks/<%= task[:id] %>/edit" class="btn btn-outline-primary" role="button">Edit</a>
+            <a href="/tasks/<%= task[:id] %>/delete" class="btn btn-outline-danger" role="button">Delete</a>
+          </span>
         </li>
       <% end %>
     </ul>
