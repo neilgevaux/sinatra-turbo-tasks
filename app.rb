@@ -27,7 +27,30 @@ end
 
 post '/tasks/:id' do
   @task = TASKS.find { |task| task[:id] == params[:id] }
+  # Edit the task name if a task exists
   @task[:name] = params[:task] if @task
+
+  redirect '/'
+end
+
+get '/tasks/:id/delete' do
+  @tasks = TASKS
+  @task = TASKS.find { |task| task[:id] == params[:id] }
+
+  if @task.nil?
+    redirect '/'
+  end
+  
+  erb :delete
+end
+
+post '/tasks/:id/delete' do
+  @task = TASKS.find { |task| task[:id] == params[:id] }
+
+  if @task
+    TASKS.delete_if { |task| task[:id] == params[:id] }
+    # Optionally, add a success message here
+  end
 
   redirect '/'
 end
