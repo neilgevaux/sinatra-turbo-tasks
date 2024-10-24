@@ -22,15 +22,19 @@ end
 get '/tasks/:id/edit' do
   @task = TASKS.find { |task| task[:id] == params[:id] }
 
+  response.headers['Content-Type'] = 'text/vnd.turbo-stream.html'
+
   erb :edit
 end
 
-post '/tasks/:id' do
+post '/tasks/:id/edit' do
   @task = TASKS.find { |task| task[:id] == params[:id] }
   # Edit the task name if a task exists
   @task[:name] = params[:task] if @task
 
-  redirect '/'
+  response.headers['Content-Type'] = 'text/vnd.turbo-stream.html'
+
+  erb :update_task
 end
 
 get '/tasks/:id/delete' do

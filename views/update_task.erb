@@ -1,0 +1,11 @@
+<turbo-stream action="replace" target="task-<%= @task[:id] %>">
+  <template>
+    <li id="task-<%= @task[:id] %>">
+      <%= @task[:name] %>
+      <span class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+        <a href="/tasks/<%= @task[:id] %>/edit" class="btn btn-outline-primary" role="button">Edit</a>
+        <a href="/tasks/<%= @task[:id] %>/delete" class="btn btn-outline-primary" role="button">Delete</a>
+      </span>
+    </li>
+  </template>
+</turbo-stream>

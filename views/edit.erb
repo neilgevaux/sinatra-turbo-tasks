@@ -1,9 +1,14 @@
-<div class="container">
-  <form action="/tasks/<%= @task[:id] %>" method="post">
-    <input type="text" name="task" id="task" value="<%= @task[:name] %>" onfocus="this.select()" />
-    <button type="submit">Submit</button>
-  </form>
-</div>
+<turbo-stream action="replace" target="edit-task">
+  <template>
+    <div class="container">
+      <h3>Edit task</h3>
+      <form action="/tasks/<%= @task[:id] %>/edit" method="post">
+        <input type="text" name="task" id="task" value="<%= @task[:name] %>" onfocus="this.select()" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </template>
+</turbo-stream>
 
 <script>
   // Automatically select all text when input is focused
