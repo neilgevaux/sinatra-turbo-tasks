@@ -1,0 +1,10 @@
+<h1>Delete task</h1>
+
+<p>Are you sure you want to delete "<%= @task[:name] %>"?</p>
+
+<form action="/tasks/<%= @task[:id] %>/delete" method="post">
+  <button type="submit" class="btn btn-outline-danger">Yes, delete</button>
+  <a href="/" class="btn btn-outline-primary">No, go home</a>
+</form>
+
+<p><%= @tasks %></p>

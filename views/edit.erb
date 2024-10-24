@@ -1,0 +1,13 @@
+<div class="container">
+  <form action="/tasks/<%= @task[:id] %>" method="post">
+    <input type="text" name="task" id="task" value="<%= @task[:name] %>" onfocus="this.select()" />
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script>
+  // Automatically select all text when input is focused
+  document.getElementById('task').addEventListener('focus', function() {
+    this.select();
+  });
+</script>
