@@ -1,0 +1,19 @@
+<!-- Replace the task in the list -->
+<turbo-stream action="replace" target="task-<%= @task[:id] %>">
+  <template>
+    <li id="task-<%= @task[:id] %>">
+      <%= @task[:name] %>
+      <span class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+        <form action="/tasks/<%= @task[:id] %>/edit" method="get" data-turbo-frame="edit-task-frame">
+          <button type="submit" class="btn btn-outline-primary">Edit</button>
+        </form>
+        <a href="/tasks/<%= @task[:id] %>/delete" class="btn btn-outline-primary" role="button">Delete</a>
+      </span>
+    </li>
+  </template>
+</turbo-stream>
+
+<!-- Remove the edit form (edit-task-frame) -->
+<turbo-stream action="remove" target="edit-task-frame">
+  <template></template>
+</turbo-stream>

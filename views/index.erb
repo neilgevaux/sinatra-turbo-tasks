@@ -1,4 +1,3 @@
-
 <div class="container">
   <header>
     <h1>Task list</h1>
@@ -23,7 +22,9 @@
       <li id="task-<%= task[:id] %>">
         <%= task[:name] %>
         <span class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-          <a href="/tasks/<%= task[:id] %>/edit" class="btn btn-outline-primary" role="button">Edit</a>
+          <form action="/tasks/<%= task[:id] %>/edit" method="get" data-turbo-frame="edit-task-frame">
+            <button type="submit" class="btn btn-outline-primary">Edit</button>
+          </form>
           <a href="/tasks/<%= task[:id] %>/delete" class="btn btn-outline-primary" role="button">Delete</a>
         </span>
         </li>

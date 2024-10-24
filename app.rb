@@ -34,7 +34,7 @@ post '/tasks/:id/edit' do
 
   response.headers['Content-Type'] = 'text/vnd.turbo-stream.html'
 
-  erb :update_task
+  erb :update_task_and_clear_form
 end
 
 get '/tasks/:id/delete' do
